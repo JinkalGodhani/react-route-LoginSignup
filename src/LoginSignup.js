@@ -4,27 +4,42 @@ import validator from 'validator';
 import {Login} from './Login';
 import {Signup} from './Signup';
 
-export function LoginSignup() {
-  return(
-    <Router>
-      <div className="container">
-      <nav className="navbar">
-        <ul>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Signup</Link>
-            </li>
-          </ul>
-          </nav>
-        <hr />
-        <Route path="/login" component={login} />
-        <Route path="/signup" component={signup} />
-      </div>
-    </Router>
-  );
+export class LoginSignup extends React.Component {
+  constructor(props){
+    super(props);
+    this.state= { isLoggedIn : props.handleLogin };
+  }
+  
+  render() {
+    const {isLoggedIn} = this.state;
+    console.log("router login", this.state.isLoggedIn);
+    return(
+      <Router>
+        <div className="container">
+        <nav className="navbar">
+          <ul style={{float: "right"}}>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                {!isLoggedIn && <Link to="/signup">Signup</Link>}
+              </li>
+            </ul>
+            </nav>
+          <hr />
+          <Route path="/login" component={login} />
+          <Route path="/signup" component={signup} />
+        </div>
+      </Router>
+    );
+  }
+  
 }
+
+LoginSignup.defaultProps={
+    handleLogin: false
+}
+
 
 function login() {
   return(

@@ -48,3 +48,8 @@ label{
   font-size: 13px;
   color: red;
 }
+
+li.disabled{
+  pointer-events: none;
+  cursor: default;
+}
