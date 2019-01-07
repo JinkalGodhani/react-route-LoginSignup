@@ -12,7 +12,7 @@ export class LoginSignup extends React.Component {
   
   render() {
     const {isLoggedIn} = this.state;
-    console.log("router login", this.state.isLoggedIn);
+    console.log("isLoggedIn", this.state.isLoggedIn);
     return(
       <Router>
         <div className="container">
@@ -32,8 +32,7 @@ export class LoginSignup extends React.Component {
         </div>
       </Router>
     );
-  }
-  
+  } 
 }
 
 LoginSignup.defaultProps={

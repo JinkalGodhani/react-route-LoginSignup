@@ -1,4 +1,5 @@
 import React from 'react';
+import { LoginSignup } from './LoginSignup';
 
 export class Login extends React.Component {
     constructor(props){
@@ -11,7 +12,7 @@ export class Login extends React.Component {
     }
     
     logout(){
-        this.setState({authValidate: false,isLoggedIn:false});
+        this.setState({authValidate: !this.state.authValidate, isLoggedIn:false});
     }
 
     render() {
@@ -32,14 +33,14 @@ export class Login extends React.Component {
                             <label for="pwd">Password:</label>
                             <input type="password" className="form-control" id="pwd" placeholder="Enter password" name="pwd" required/>
                         </div>
-                        <button type="submit" className="btn" >Login</button>
+                        <button type="submit" className="btn" onClick={this.logout}>Login</button>
                     </form>
                 </div>
             ):(
                 <div>
-                    <div>You Successfully Logged In!!!</div>
-                    <button onClick={this.logout}>Logout</button>
-                    <LoginSignup handleLogin={this.state.isLoggedIn}/>
+                    <h2>You Successfully Logged In!!!</h2>
+                    <button onClick={this.logout} className="btn">Logout</button>
+                    {/* <LoginSignup handleLogin={this.state.isLoggedIn}/> */}
                 </div>
             )
         );
